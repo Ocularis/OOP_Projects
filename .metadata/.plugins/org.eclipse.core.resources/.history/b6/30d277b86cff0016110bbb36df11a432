@@ -1,0 +1,60 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+// arver JFrame så vi kan benytte alle arvede egenskaper
+public class MainFrame extends JFrame{
+	
+	// konstruktør
+	public MainFrame(String title) {
+		// sender tittel til JFrames konstruktør
+		super(title);
+		
+		// henter Container og setter layout-type på denne
+		Container container = getContentPane();
+		container.setLayout(new BorderLayout());
+		
+		// lager ett panel og setter layout-type på denne
+		JPanel panel = new JPanel();
+		panel.setLayout(new BorderLayout());
+		
+		// lager en knapp
+		JButton knapp = new JButton("Trykk meg!");
+		
+		// lager en lytter til knapp
+		knapp.addActionListener(new ActionListener() {
+			
+			// når knappen trykkes -> action
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// sjekker om fargen er rosa fra før
+				if(container.getBackground().equals( Color.PINK) ) {
+					// setter fargen til mangenta
+					container.setBackground(Color.MAGENTA);
+				} else {
+					// om fargen ikke er rosa setter vi den til rosa
+					container.setBackground(Color.PINK);
+				}
+			}
+		});
+		
+		// legger knappen til i panelet
+		panel.add(knapp, BorderLayout.NORTH);
+		
+		// legger knappen til i container
+		container.add(panel, BorderLayout.NORTH);
+		
+		// setter bakgrunnsfarg til rosa
+		container.setBackground(Color.PINK);
+		
+	}
+
+}
