@@ -1,14 +1,18 @@
 package inventory;
 
+import java.util.ArrayList;
+
 public class Item {
 	private String name; 
 	private int itemID;
-	private int amount; 
 	
-	public Item(String name, int itemID, int amount) {
+	private static ArrayList<Item> items = new ArrayList<>();
+	
+	public Item(String name, int itemID) {
 		this.name = name; 
 		this.itemID = itemID; 
-		this.amount = amount; 
+		
+		items.add(this);
 	}
 
 	public String getName() {
@@ -26,12 +30,8 @@ public class Item {
 	public void setItemID(int itemID) {
 		this.itemID = itemID;
 	}
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
+	
+	public static ArrayList<Item> getItems() {
+		return items;
 	}
 }

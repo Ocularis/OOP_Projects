@@ -2,7 +2,7 @@ package hr;
 
 import administration.Department;
 
-public class Employee extends Person {
+public abstract class Employee extends Person {
 
 	private String employeeID;
 	
@@ -19,6 +19,10 @@ public class Employee extends Person {
 		this.employeeID = employeeID;
 	}
 	
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "(E) " + super.toString();
+	}
 	
 }

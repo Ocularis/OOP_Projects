@@ -1,18 +1,24 @@
 package hr;
 
+import java.util.ArrayList;
+
 import administration.Department;
 
-public class Person {
+public abstract class Person {
 	private String name;
 	private String surName;
 	private String phone; 
 	private Department department;
+	
+	private static ArrayList<Person> persons = new ArrayList<>();
 	
 	public Person(String name, String surName, String phone, Department department) {
 		this.name = name;
 		this.surName = surName;
 		this.phone = phone;
 		this.department = department;
+		
+		persons.add(this);
 	}
 	
 	public void setName(String name) {
@@ -45,6 +51,16 @@ public class Person {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	
+	public static ArrayList<Person> getPersons() {
+		return persons; 
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return name + " " + surName;
 	}
 	
 	

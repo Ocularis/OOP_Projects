@@ -1,18 +1,20 @@
 package hr;
 
+import java.util.ArrayList;
+
 import administration.Course;
 import administration.Department;
 
 public class Student extends Person {
 
 	private String studentID;
-	private Course course;
 	
-	public Student(String name, String surName, String phone, Department department, String studentID, Course course) {
+	private ArrayList<Course> courses = new ArrayList<>();
+	
+	public Student(String name, String surName, String phone, Department department, String studentID) {
 		super(name, surName, phone, department);
 		
 		this.studentID = studentID;
-		this.course = course;
 		
 	}
 
@@ -24,12 +26,15 @@ public class Student extends Person {
 		this.studentID = studentID;
 	}
 
-	public Course getCourse() {
-		return course;
+	public ArrayList<Course> getCourse() {
+		return courses;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "(S) " + super.toString();
 	}
 
-	public void setCourse(Course course) {
-		this.course = course;
-	}
 	
 }
