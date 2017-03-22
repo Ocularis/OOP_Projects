@@ -34,4 +34,10 @@ public class Item {
 	public static ArrayList<Item> getItems() {
 		return items;
 	}
+	
+	@Override
+	public String toString() {
+	// TODO Auto-generated method stub
+		return name + " [" + itemID+ "]";
+	}
 }

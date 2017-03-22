@@ -1,11 +1,12 @@
 package inventory;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.GregorianCalendar;
 
 import hr.Person;
 
-public class Loan {
+public class Loan implements Comparable<Loan> {
 	private Item item; 
 	private Person person; 
 	private GregorianCalendar loanDate;
@@ -47,6 +48,40 @@ public class Loan {
 	public static ArrayList<Loan> getLoans() {
 		return loans;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return item.getName() + " " + person + " [" + loanDate.getTime() + "]";
+	}
+
+	@Override
+    public int compareTo(Loan l) {
+        return Comparators.NAME.compare(this, l);
+    }
+
+
+    public static class Comparators {
+
+        public static Comparator<Loan> AGEDESC = new Comparator<Loan>() {
+            @Override
+            public int compare(Loan l1, Loan l2) {
+                return l1.loanDate.compareTo(l2.loanDate);
+            }
+        };
+        public static Comparator<Loan> AGEASC = new Comparator<Loan>() {
+            @Override
+            public int compare(Loan l1, Loan l2) {
+                return l1.loanDate.compareTo(l2.loanDate)*-1;
+            }
+        };
+        public static Comparator<Loan> NAME = new Comparator<Loan>() {
+            @Override
+            public int compare(Loan l1, Loan l2) {
+                return l1.person.getSurName().compareTo(l2.person.getSurName());
+            }
+        };
+    }
 	
 }
 
